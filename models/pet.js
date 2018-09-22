@@ -2,13 +2,16 @@
 
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const Owner = mongoose.model('Owner')
 
 const PetSchema = Schema({
+  owner: {type: Schema.ObjectId, ref: "Owner"},
   name: String,
   photo: String,
   breed: String,
+  birthdate: Date,
   gender: {type: String, enum: ['male','female']},
-  owner: String
+  status: { type: String, default: "A" }
 })
 
 module.exports = mongoose.model('Pet',PetSchema)

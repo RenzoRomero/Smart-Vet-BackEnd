@@ -5,15 +5,19 @@ const Schema = mongoose.Schema
 const bcrypt = require('bcrypt-nodejs')
 mongoose.set('useCreateIndex', true)
 
-const UserSchema = new Schema({
+const OwnerSchema = new Schema({
   email: { type: String, unique: true, lowercase: true },
   displayName: String,
-  photo: String,
   password: { type: String, select: true },
+  photo: { type: String, default: "" },
+  home: String,
+  phone: Number,
+  sex: {type: String, enum: ['man','woman']},
+  status: { type: String, default: "A" },
   signupDate: { type: Date, default: Date.now() }
 })
 
-UserSchema.pre('save', function(next) {
+OwnerSchema.pre('save', function(next) {
   if (!this.isModified('password')) return next()
 
   bcrypt.genSalt(10, (err, salt) => {
@@ -28,10 +32,10 @@ UserSchema.pre('save', function(next) {
   })
 })
 
-UserSchema.methods.comparePassword = function (candidatePassword, cb) {
+OwnerSchema.methods.comparePassword = function (candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
     cb(err, isMatch)
   });
 }
 
-module.exports = mongoose.model('User', UserSchema)
+module.exports = mongoose.model('Owner', OwnerSchema)
