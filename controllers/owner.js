@@ -37,12 +37,12 @@ function signIn (req, res) {
       req.owner = owner
       return res.status(200).send({
         message: 'Te has logueado correctamente',
+        owner: owner,
         token: service.createToken(owner)
       })
-    });
-
-  }).select('_id email + password');
-}
+    })
+  })
+  }
 
 function getOwner (req, res) {
   let ownerId = req.params.ownerId
