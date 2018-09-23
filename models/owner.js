@@ -12,7 +12,7 @@ const OwnerSchema = new Schema({
   password: { type: String, select: true },
   photo: { type: String, default: "" },
   address: String,
-  phone: Number,
+  mobilePhone: Number,
   sex: {type: String, enum: ['man','woman']},
   status: { type: String, default: "A" },
   signupDate: { type: Date, default: Date.now() }

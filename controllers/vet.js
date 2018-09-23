@@ -11,7 +11,7 @@ function signUp (req, res) {
     lastName: req.body.lastName,
     password: req.body.password,
     address: req.body.address,
-    phone: req.body.phone,
+    mobilePhone: req.body.mobilePhone,
     sex: req.body.sex
   })
 
