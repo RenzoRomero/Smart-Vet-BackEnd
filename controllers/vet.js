@@ -40,9 +40,8 @@ function signIn (req, res) {
         vet: vet,
         token: service.createToken(vet)
       })
-    });
-
-  }).select('_id email firstName lastName address mobilePhone sex + password');
+    })
+  })
 }
 
 function getVet (req, res) {
