@@ -19,7 +19,7 @@ function signUp (req, res) {
     if (err) return res.status(500).send({ message: `Error al crear veterinario: ${err}` })
 
     return res.status(200).send({
-      message: 'Te has registrado correctamente',
+      message: '200',
       token: service.createToken(vet)
     })
   })
