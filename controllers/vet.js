@@ -37,6 +37,7 @@ function signIn (req, res) {
       req.vet = vet
       return res.status(200).send({
         message: 'Te has logueado correctamente',
+        vet: vet,
         token: service.createToken(vet)
       })
     });
