@@ -7,9 +7,10 @@ const service = require('../services')
 function signUp (req, res) {
   const owner = new Owner({
     email: req.body.email,
-    displayName: req.body.displayName,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     password: req.body.password,
-    home: req.body.home,
+    address: req.body.address,
     phone: req.body.phone,
     sex: req.body.sex
   })
