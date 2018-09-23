@@ -27,10 +27,12 @@ function saveProduct (req, res) {
   console.log(req.body)
 
   let product = new Product()
+  product.brand = req.body.brand
   product.name = req.body.name
   product.picture = req.body.picture
   product.description = req.body.description
   product.price = req.body.price
+  product.quantity = req.body.quantity
 
   product.save((err, productStored) => {
     if(err) res.status(500).send({message: `Error al salvar en la base de datos: ${err}`})
