@@ -42,7 +42,7 @@ function signIn (req, res) {
       })
     });
 
-  }).select('_id email + password');
+  }).select('_id email firstName lastName address mobilePhone sex + password');
 }
 
 function getVet (req, res) {
