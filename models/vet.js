@@ -15,7 +15,7 @@ const VetSchema = new Schema({
   mobilePhone: Number,
   gender: {type: String, enum: ['Man','Woman']},
   status: { type: String, default: "A" },
-  signupDate: { type: Date, default: Date.now() }
+  signUpDate: { type: Date, default: Date.now() }
 })
 
 VetSchema.pre('save', function(next) {
