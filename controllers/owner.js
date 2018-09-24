@@ -7,12 +7,12 @@ const service = require('../services')
 function signUp (req, res) {
   const owner = new Owner({
     email: req.body.email,
-    firstName: req.body.firstName,
+    name: req.body.name,
     lastName: req.body.lastName,
     password: req.body.password,
     address: req.body.address,
     mobilePhone: req.body.mobilePhone,
-    sex: req.body.sex
+    gender: req.body.gender
   })
 
   owner.save((err) => {

@@ -7,15 +7,15 @@ mongoose.set('useCreateIndex', true)
 
 const OwnerSchema = new Schema({
   email: { type: String, unique: true, lowercase: true },
-  firstName: String,
+  name: String,
   lastName: String,
   password: { type: String, select: true },
   photo: { type: String, default: "" },
   address: String,
   mobilePhone: Number,
-  sex: {type: String, enum: ['man','woman']},
+  gender: {type: String, enum: ['Man','Woman']},
   status: { type: String, default: "A" },
-  signupDate: { type: Date, default: Date.now() }
+  signUpDate: { type: Date, default: Date.now() }
 })
 
 OwnerSchema.pre('save', function(next) {
