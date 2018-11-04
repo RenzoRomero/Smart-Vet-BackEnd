@@ -11,6 +11,8 @@ const api = express.Router()
 api.post('/vet/signup', vetCtrl.signUp)
 api.post('/vet/signin', vetCtrl.signIn)
 api.get('/vet', vetCtrl.getVets)
+api.put('/vet/:vetId', vetCtrl.updateVet)
+api.delete('/vet/:vetId', vetCtrl.deleteVet)
 
 api.post('/owner/signup', ownerCtrl.signUp)
 api.post('/owner/signin', ownerCtrl.signIn)

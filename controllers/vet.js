@@ -64,9 +64,35 @@ function getVets (req, res) {
   })
 }
 
+function updateVet (req, res) {
+  let vetId = req.params.vetId
+  let update = req.body
+
+  Vet.findByIdAndUpdate(vetId, update, (err, vetUpdated) =>{
+    if(err) res.status(500).send({message: `Error al actualizar datos del veterinario ${err}`})
+
+    res.status(200).send({ vet: vetUpdated})
+  })
+}
+
+function deleteVet (req, res) {
+  let vetId = req.params.vetId
+
+  Vet.findById(vetId, (err, vet) => {
+    if(err) res.status(500).send({message: `Error al borrar datos del veterinario ${err}`})
+
+    vet.remove(err => {
+      if(err) res.status(500).send({message: `Error al borrar datos del veterinario ${err}`})
+      res.status(200).send({message: `El veterinario se ha sido eliminado`})
+    })
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   getVet,
-  getVets
+  getVets,
+  updateVet,
+  deleteVet
 }
