@@ -33,16 +33,15 @@ VetSchema.pre('save', function(next) {
   })
 })
 
-VetSchema.pre('update', function(next) {
-  if (!this.isModified('password')) return next()
+VetSchema.pre('findOneAndUpdate', function(next) {
 
   bcrypt.genSalt(10, (err, salt) => {
     if (err) return next(err)
 
-    bcrypt.hash(this.password, salt, null, (err, hash) => {
+    bcrypt.hash(this.getUpdate().password, salt, null, (err, hash) => {
       if (err) return next(err)
 
-      this.password = hash
+      this.getUpdate().password = hash
       next()
     })
   })
