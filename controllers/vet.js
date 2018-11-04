@@ -71,7 +71,9 @@ function updateVet (req, res) {
   Vet.findByIdAndUpdate(vetId, update, (err, vetUpdated) =>{
     if(err) res.status(500).send({message: `Error al actualizar datos del veterinario ${err}`})
 
-    res.status(200).send({ vet: vetUpdated})
+    res.status(200).send({
+      message: '200',
+      vet: vetUpdated})
   })
 }
 
@@ -83,7 +85,9 @@ function deleteVet (req, res) {
 
     vet.remove(err => {
       if(err) res.status(500).send({message: `Error al borrar datos del veterinario ${err}`})
-      res.status(200).send({message: `El veterinario se ha sido eliminado`})
+      res.status(200).send({
+        message: '200',
+        message: `El veterinario se ha sido eliminado`})
     })
   })
 }
