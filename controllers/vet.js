@@ -68,7 +68,7 @@ function updateVet (req, res) {
   let vetId = req.params.vetId
   let update = req.body
 
-  Vet.findByIdAndUpdate(vetId, update, (err, vetUpdated) =>{
+  Vet.findOneAndUpdate(vetId, update, { new: true },(err, vetUpdated) =>{
     if(err) res.status(500).send({message: `Error al actualizar datos del veterinario ${err}`})
 
     res.status(200).send({
