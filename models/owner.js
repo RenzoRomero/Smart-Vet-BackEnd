@@ -33,6 +33,20 @@ OwnerSchema.pre('save', function(next) {
   })
 })
 
+OwnerSchema.pre('findOneAndUpdate', function(next) {
+
+  bcrypt.genSalt(10, (err, salt) => {
+    if (err) return next(err)
+
+    bcrypt.hash(this.getUpdate().password, salt, null, (err, hash) => {
+      if (err) return next(err)
+
+      this.getUpdate().password = hash
+      next()
+    })
+  })
+})
+
 OwnerSchema.methods.comparePassword = function (candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
     cb(err, isMatch)

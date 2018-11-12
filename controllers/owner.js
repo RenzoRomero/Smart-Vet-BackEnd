@@ -19,7 +19,7 @@ function signUp (req, res) {
     if (err) return res.status(500).send({ message: `Error al crear propietario: ${err}` })
 
     return res.status(200).send({
-      message: 'Te has registrado correctamente',
+      message: '200',
       token: service.createToken(owner)
     })
   })
@@ -64,9 +64,39 @@ function getOwners (req, res) {
   })
 }
 
+function updateOwner (req, res) {
+  let ownerId = req.params.ownerId
+  let update = req.body
+
+  Owner.findOneAndUpdate(ownerId, update, { new: true },(err, ownerUpdated) =>{
+    if(err) res.status(500).send({message: `Error al actualizar datos del propietario ${err}`})
+
+    res.status(200).send({
+      message: '200',
+      owner: ownerUpdated})
+  })
+}
+
+function deleteOwner (req, res) {
+  let ownerId = req.params.ownerId
+
+  Owner.findById(ownerId, (err, owner) => {
+    if(err) res.status(500).send({message: `Error al borrar datos del propietario ${err}`})
+
+    owner.remove(err => {
+      if(err) res.status(500).send({message: `Error al borrar datos del propietario ${err}`})
+      res.status(200).send({
+        message: '200',
+        message: `El propietario se ha sido eliminado`})
+    })
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   getOwner,
-  getOwners
+  getOwners,
+  updateOwner,
+  deleteOwner
 }

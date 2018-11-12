@@ -17,6 +17,8 @@ api.delete('/vet/:vetId', vetCtrl.deleteVet)
 api.post('/owner/signup', ownerCtrl.signUp)
 api.post('/owner/signin', ownerCtrl.signIn)
 api.get('/owner', ownerCtrl.getOwners)
+api.put('/owner/:ownerId', ownerCtrl.updateOwner)
+api.delete('/owner/:ownerId', ownerCtrl.deleteOwner)
 
 api.get('/pet', petCtrl.getPets)
 api.get('/pet/:petId', petCtrl.getPet)
