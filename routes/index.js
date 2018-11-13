@@ -5,6 +5,9 @@ const vetCtrl = require('../controllers/vet')
 const ownerCtrl = require('../controllers/owner')
 const petCtrl = require('../controllers/pet')
 const productCtrl = require('../controllers/product')
+const clinicHistoryCtrl = require('../controllers/clinicHistory')
+const serviceCtrl = require('../controllers/service')
+const promotionCtrl = require('../controllers/promotion')
 const auth = require('../middlewares/auth')
 const api = express.Router()
 
@@ -31,6 +34,18 @@ api.get('/product/:productId', productCtrl.getProduct)
 api.post('/product', auth, productCtrl.saveProduct)
 api.delete('/product/:productId', auth, productCtrl.deleteProduct)
 api.put('/product/:productId', auth, productCtrl.updateProduct)
+
+api.get('/service', serviceCtrl.getServices)
+api.get('/service/:serviceId', serviceCtrl.getService)
+api.post('/service', auth, serviceCtrl.saveService)
+api.delete('/service/:serviceId', auth, serviceCtrl.deleteService)
+api.put('/service/:serviceId', auth, serviceCtrl.updateService)
+
+api.get('/promotion', promotionCtrl.getPromotions)
+api.get('/promotion/:promotionId', promotionCtrl.getPromotion)
+api.post('/promotion', auth, promotionCtrl.savePromotion)
+api.delete('/promotion/:promotionId', auth, promotionCtrl.deletePromotion)
+api.put('/promotion/:promotionId', auth, promotionCtrl.updatePromotion)
 
 api.get('/private', auth, (req, res) => {
   res.status(200).send({ message: `Tienes acceso`})
