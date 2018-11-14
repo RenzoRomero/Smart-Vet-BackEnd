@@ -56,7 +56,7 @@ function getOwner (req, res) {
 }
 
 function getOwners (req, res) {
-  Owner.find({"status", "A"}, (err,owners) => {
+  Owner.find({"status": "A"}, (err,owners) => {
     if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
     if (!owners) return res.status(404).send({message: `No existen mascotas`})
 
