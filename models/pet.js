@@ -11,7 +11,8 @@ const PetSchema = Schema({
   breed: String,
   birthdate: String,
   gender: {type: String, enum: ['Male','Female']},
-  status: { type: String, default: "A" }
+  status: { type: String, default: "A" },
+  createDate: { type: Date, default: Date.now() }
 })
 
 module.exports = mongoose.model('Pet',PetSchema)
