@@ -17,7 +17,7 @@ function getPet (req, res) {
 }
 
 function getPets (req, res) {
-  Pet.find({}, (err,pets) => {
+  Pet.find({"status": "A"}, (err,pets) => {
     if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
     if (!pets) return res.status(404).send({message: `No existen mascotas`})
 
