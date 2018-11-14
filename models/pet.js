@@ -9,8 +9,8 @@ const PetSchema = Schema({
   name: String,
   photo: String,
   breed: String,
-  birthdate: Date,
-  gender: {type: String, enum: ['male','female']},
+  birthdate: String,
+  gender: {type: String, enum: ['Male','Female']},
   status: { type: String, default: "A" }
 })
 
