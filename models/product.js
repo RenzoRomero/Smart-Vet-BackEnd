@@ -9,7 +9,8 @@ const ProductSchema = new Schema({
   photo: String,
   description: String,
   price: Number,
-  quantity: Number
+  quantity: Number,
+  status: { type: String, default: "A" }
 })
 
 module.exports = mongoose.model('Product', ProductSchema)
