@@ -30,7 +30,8 @@ function savePromotion (req, res) {
   promotion.name = req.body.name
   promotion.photo = req.body.photo
   promotion.description = req.body.description
-  promotion.price = req.body.price
+  promotion.startDate = req.body.startDate
+  promotion.endingDate = req.body.endingDate
 
   promotion.save((err, promotionStored) => {
     if(err) res.status(500).send({message: `Error al salvar en la base de datos: ${err}`})
