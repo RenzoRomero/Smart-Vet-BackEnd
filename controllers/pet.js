@@ -90,6 +90,7 @@ function deletePet (req, res) {
 module.exports = {
   getPet,
   getPets,
+  getPetsByOwner,
   savePet,
   updatePet,
   deletePet

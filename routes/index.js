@@ -25,6 +25,7 @@ api.delete('/owner/:ownerId', ownerCtrl.deleteOwner)
 
 api.get('/pet', petCtrl.getPets)
 api.get('/pet/:petId', petCtrl.getPet)
+api.get('/pet/owner/:ownerId', petCtrl.getPetsByOwner)
 api.post('/pet', petCtrl.savePet)
 api.put('/pet/:petId', petCtrl.updatePet)
 api.delete('/pet/:petId', petCtrl.deletePet)
