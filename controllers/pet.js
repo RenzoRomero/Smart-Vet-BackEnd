@@ -27,6 +27,18 @@ function getPets (req, res) {
   })
 }
 
+function getPetsByOwner (req, res) {
+  let ownerId = req.params.ownerId
+  Pet.find({"status": "A", "owner": ownerId}, (err,pets) => {
+    if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
+    if (!pets) return res.status(404).send({message: `No existen mascotas`})
+
+    Owner.populate(pets, {path: "owner"}, function(err, pets){
+      res.status(200).send({ pets })
+    });
+  })
+}
+
 function savePet (req, res) {
   console.log('POST /api/pet')
   console.log(req.body)
