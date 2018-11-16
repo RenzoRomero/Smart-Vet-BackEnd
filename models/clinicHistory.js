@@ -8,6 +8,7 @@ const clinicHistorySchema = Schema({
   date: Date,
   pet: {type: Schema.ObjectId, ref: "Pet"},
   weight: Number,
+  height: Number,
   details: String
 })
 
