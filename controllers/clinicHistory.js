@@ -9,8 +9,6 @@ function getClinicHistory (req, res) {
     if(err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
     if(!clinicHistory) return res.status(404).send({message: `Error la história clínica no existe`})
 
-    res.status(200).send({ clinicHistory })
-
     Pet.populate(pet, {path: "pet"}, function(err, clinicHistory){
       Owner.populate(pet, {path: "pet.owner"}, function(err, clinicHistory){
         res.status(200).send({ clinicHistory })
