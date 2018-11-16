@@ -11,8 +11,8 @@ function getClinicHistory (req, res) {
     if(err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
     if(!clinicHistory) return res.status(404).send({message: `Error la história clínica no existe`})
 
-    Pet.populate(pet, {path: "pet"}, function(err, clinicHistory){
-      Owner.populate(pet, {path: "pet.owner"}, function(err, clinicHistory){
+    Pet.populate(clinicHistory, {path: "pet"}, function(err, clinicHistory){
+      Owner.populate(clinicHistory, {path: "pet.owner"}, function(err, clinicHistory){
         res.status(200).send({ clinicHistory })
       });
     });
@@ -24,8 +24,8 @@ function getClinicalHistories (req, res) {
     if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
     if(!clinicalHistories) return res.status(404).send({message: `No existen productos`})
 
-    Pet.populate(pet, {path: "pet"}, function(err, clinicalHistories){
-      Owner.populate(pet, {path: "pet.owner"}, function(err, clinicalHistories){
+    Pet.populate(clinicalHistories, {path: "pet"}, function(err, clinicalHistories){
+      Owner.populate(clinicalHistories, {path: "pet.owner"}, function(err, clinicalHistories){
         res.status(200).send({ clinicalHistories })
       });
     });
@@ -39,8 +39,8 @@ function getClinicalHistoriesByPet (req, res) {
     if(err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
     if(!clinicalHistories) return res.status(404).send({message: `No existen productos`})
 
-    Pet.populate(pet, {path: "pet"}, function(err, clinicalHistories){
-      Owner.populate(pet, {path: "pet.owner"}, function(err, clinicalHistories){
+    Pet.populate(clinicalHistories, {path: "pet"}, function(err, clinicalHistories){
+      Owner.populate(clinicalHistories, {path: "pet.owner"}, function(err, clinicalHistories){
         res.status(200).send({ clinicalHistories })
       });
     });
