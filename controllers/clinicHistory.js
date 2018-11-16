@@ -1,6 +1,8 @@
 'use strict'
 
 const ClinicHistory = require('../models/clinicHistory')
+const Pet = require('../models/pet')
+const Owner = require('../models/owner')
 
 function getClinicHistory (req, res) {
   let clinicHistoryId = req.params.clinicHistoryId
